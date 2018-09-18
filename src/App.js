@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { load } from './Spreadsheet';
 import './App.css';
 import config from "./config";
+import Circle from "./Circle";
 
 class App extends Component {
   state = {
@@ -37,22 +38,11 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <ul>
-          {data.map((row, i) => (
-            <li key={i}>
-              {row['Poster Titles']}
-            </li>
-          ))}
-        </ul>
-        <div className="outer-circle">
-          <div className="progress-circle" data-start="0" data-value="180"></div>
-          <div className="progress-circle" data-start="180" data-value="90"></div>
-          <div className="progress-circle difference" data-start="270" data-value="50"></div>
-          <hr/><hr/><hr/><hr/>
-            <div className="circle">
-              Elephant Microservices
-            </div>
-        </div>
+        {data.map((row, i) => (
+          <div key={i}>
+            <Circle circleText={row['Poster Titles']} effortPoints={row['Est. Effort']} progressPercent={(row['%']*100)} />
+          </div>
+        ))}
       </div>
     );
   }
