@@ -1,8 +1,9 @@
 import React from 'react';
 
+
 const Circle = ({circleText, effortPoints, progressPercent}) => {
-  const scale = effortPoints / 15;
-  const differencePercent = 10; // TODO: load this from spreadsheet
+  const scale = effortPoints / 25;
+  const differencePercent = 7; // TODO: load this from spreadsheet
 
   const hrStyle = {
     top: (scale*283)+'px',
@@ -22,11 +23,14 @@ const Circle = ({circleText, effortPoints, progressPercent}) => {
     transformOrigin: 'center center',
     top: '33px',
     background: makeConicGrad(Math.round(progressPercent), Math.round(differencePercent)),
+    boxShadow: `inset ${scale*4}px ${scale*4}px ${scale*6}px 0 rgba(0, 0, 0, 0.3), ${scale*3}px ${scale*3}px ${scale*4}px rgba(255, 255, 255, 1)`,
   };
   const circleStyle = {
     height: (scale*500)+'px',
     width: (scale*500)+'px',
     fontSize: (scale*70)+'px',
+    boxShadow: `inset ${scale*3}px ${scale*3}px ${scale*4}px rgba(255, 255, 255, 1), ${scale*6}px ${scale*6}px ${scale*10}px 0 rgba(0, 0, 0, 0.3)`,
+    textShadow: `${scale*2}px ${scale*2}px ${scale*2}px rgba(0, 0, 0, 0.6)`,
   };
   return (
     <div style={outerCircleStyle} className="outer-circle">
@@ -38,7 +42,7 @@ const Circle = ({circleText, effortPoints, progressPercent}) => {
       <hr style={Object.assign({transform: 'rotate(-45deg)'}, hrStyle)}/>
       <hr style={Object.assign({transform: 'rotate(-135deg)'}, hrStyle)}/>
       <div style={circleStyle} className="circle">
-        {circleText}
+        <span>{circleText}</span>
       </div>
     </div>
   );
@@ -46,9 +50,9 @@ const Circle = ({circleText, effortPoints, progressPercent}) => {
 
 function makeConicGrad(progressPercent, differencePercent) {
   const progressColor = 'rgba(244, 123, 91, 0.8)';
-  const progressColor2 = 'rgba(244, 123, 91, 0.8)';//'rgba(206, 76, 41, 0.9)';
   const differenceColor = 'rgba(244, 210, 91, 0.8)';
-  return `conic-gradient(${progressColor} 0%, ${progressColor2} ${progressPercent}%, ${differenceColor} ${differencePercent}%, ${differenceColor} ${differencePercent+progressPercent}%, rgba(0,0,0,0) ${(100-progressPercent)}%, rgba(0,0,0,0) 100%)`;
+  const differenceSegment = (100-progressPercent > differencePercent) ? `${differenceColor} ${progressPercent}%, ${differenceColor} ${progressPercent+differencePercent}%,` : '';
+  return `conic-gradient(${progressColor} ${progressPercent}%, ${differenceSegment} rgba(0,0,0,0) 0)`;
 }
 
 export default Circle;

@@ -3,6 +3,8 @@ import { load } from './Spreadsheet';
 import './App.css';
 import config from "./config";
 import Circle from "./Circle";
+import Spinner from './Spinner';
+
 
 class App extends Component {
   state = {
@@ -35,6 +37,9 @@ class App extends Component {
     if (error) {
       console.log(this.state.error);
       return <div className="App">An error occurred.</div>
+    }
+    if(data.length === 0) {
+      return <div className="App"><div className='loading'><Spinner /></div></div>
     }
     return (
       <div className="App">

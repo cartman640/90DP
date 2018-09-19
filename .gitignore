@@ -62,3 +62,6 @@ typings/
 
 # Google API config
 src/config.js
+
+# Webstorm
+.idea/
