@@ -2,31 +2,25 @@ import React from 'react';
 
 const Circle = ({circleText, effortPoints, progressPercent}) => {
   const scale = effortPoints / 15;
-  const diameter = 500;
-  const progress = 35;
-  const hrTop = 283;
-  const hrWidth = 569;
   const differencePercent = 10; // TODO: load this from spreadsheet
 
   const hrStyle = {
-    top: (scale*hrTop)+'px',
-    width: (scale*hrWidth)+'px',
+    top: (scale*283)+'px',
+    width: (scale*569)+'px',
     margin: '0 0 0 '+(scale*-35)+'px',
   };
   const outerCircleStyle = {
-    height: (scale*diameter)+'px',
-    width: (scale*diameter)+'px',
-    padding: (scale*progress)+'px',
+    height: (scale*500)+'px',
+    width: (scale*500)+'px',
+    padding: (scale*35)+'px',
   };
   const progressCircleStyle = {
     margin: (scale*-33)+'px' + 0 + 0 + (scale*-33)+'px',
-    // width: (scale*285)+'px',
-    // height: (scale*570)+'px',
-    // left: (scale*320)+'px',
-    width: (scale*570)+'px',
-    height: (scale*570)+'px',
-    left: (scale*50)+'px',
-    top: (scale*50)+'px',
+    width: (scale*569)+'px',
+    height: (scale*569)+'px',
+    left: '33px',
+    transformOrigin: 'center center',
+    top: '33px',
     background: makeConicGrad(Math.round(progressPercent), Math.round(differencePercent)),
   };
   const circleStyle = {
@@ -52,8 +46,8 @@ const Circle = ({circleText, effortPoints, progressPercent}) => {
 
 function makeConicGrad(progressPercent, differencePercent) {
   const progressColor = 'rgba(244, 123, 91, 0.8)';
-  const progressColor2 = 'rgba(206, 76, 41, 0.9)';
-  const differenceColor = 'red';
+  const progressColor2 = 'rgba(244, 123, 91, 0.8)';//'rgba(206, 76, 41, 0.9)';
+  const differenceColor = 'rgba(244, 210, 91, 0.8)';
   return `conic-gradient(${progressColor} 0%, ${progressColor2} ${progressPercent}%, ${differenceColor} ${differencePercent}%, ${differenceColor} ${differencePercent+progressPercent}%, rgba(0,0,0,0) ${(100-progressPercent)}%, rgba(0,0,0,0) 100%)`;
 }
 

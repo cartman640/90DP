@@ -8,16 +8,13 @@ body {
 /**
  * Circle Styles
  */
-.outer-circle {
+.outer-circle, over-circle {
   position: relative;
   border-radius: 50%;
   height: 500px;
   width: 500px;
   padding: 35px;
   background-color: #E6E7E8;
-  box-shadow:
-          inset 4px 4px 6px 0 rgba(0, 0, 0, 0.4),
-          3px 3px 4px rgba(255, 255, 255, 1);
   z-index: 2
 }
 .outer-circle hr {
@@ -26,7 +23,7 @@ body {
   width: 569px;
   padding: 0;
   margin: 0 0 0 -35px;
-  opacity: 0.65;
+  opacity: 0.35;
   z-index: 1;
 }
 .progress-circle {
@@ -42,85 +39,10 @@ body {
   -webkit-transform-origin:left center;
   transform-origin:left center;
   border-radius: 50%;
+  box-shadow:
+          inset 4px 4px 6px 0 rgba(0, 0, 0, 0.3),
+          3px 3px 4px rgba(255, 255, 255, 1);
 }
-/*.progress-circle:BEFORE {*/
-  /*content:"";*/
-  /*position:absolute;*/
-  /*width:285px;*/
-  /*height:570px;*/
-  /*left:-285px;*/
-  /*border-radius:285px 0 0 285px;*/
-  /*-moz-transform-origin:right center;*/
-  /*-ms-transform-origin:right center;*/
-  /*-o-transform-origin:right center;*/
-  /*-webkit-transform-origin:right center;*/
-  /*transform-origin:right center;*/
-/*}*/
-/*.progress-circle.big {*/
-  /*width: 570px;*/
-  /*height: 570px;*/
-  /*left: 106px;*/
-  /*transform-origin: center center;*/
-/*}*/
-/*.progress-circle.big:BEFORE {*/
-  /*left: -71px;*/
-/*}*/
-/*.progress-circle.big:AFTER {*/
-  /*content: "";*/
-  /*position: absolute;*/
-  /*width: 285px;*/
-  /*height: 570px;*/
-  /*left: 213px;*/
-  /*border-radius: 0 285px 285px 0;*/
-/*}*/
-/*.progress-circle:BEFORE,*/
-/*.progress-circle:AFTER {*/
-  /*background-image: linear-gradient(-60deg, rgba(206, 76, 41, 0.9), rgba(244, 123, 91, 0.8));*/
-/*}*/
-/*.progress-circle.difference:AFTER,*/
-/*.progress-circle.difference:BEFORE {*/
-  /*background-image: linear-gradient(-60deg, rgba(206, 202, 38, 0.9), rgba(244, 240, 57, 0.8));*/
-/*}*/
-/*.progress-circle:nth-of-type(1):AFTER,*/
-/*.progress-circle:nth-of-type(1):BEFORE {*/
-/*background-image: linear-gradient(-60deg, rgba(206, 202, 38, 0.9), rgba(244, 240, 57, 0.8));*/
-/*}*/
-.progress-circle[data-start="180"] {
-  -moz-transform: rotate(180deg); /* Firefox */
-  -ms-transform: rotate(180deg); /* IE */
-  -webkit-transform: rotate(180deg); /* Safari and Chrome */
-  -o-transform: rotate(180deg); /* Opera */
-  transform:rotate(180deg);
-}
-.progress-circle[data-start="270"] {
-  -moz-transform: rotate(270deg); /* Firefox */
-  -ms-transform: rotate(270deg); /* IE */
-  -webkit-transform: rotate(270deg); /* Safari and Chrome */
-  -o-transform: rotate(270deg); /* Opera */
-  transform:rotate(270deg);
-}
-.progress-circle[data-value="180"]:BEFORE {
-  -moz-transform: rotate(181deg); /* Firefox */
-  -ms-transform: rotate(181deg); /* IE */
-  -webkit-transform: rotate(181deg); /* Safari and Chrome */
-  -o-transform: rotate(181deg); /* Opera */
-  transform:rotate(181deg);
-}
-.progress-circle[data-value="90"]:BEFORE {
-  -moz-transform: rotate(91deg); /* Firefox */
-  -ms-transform: rotate(91deg); /* IE */
-  -webkit-transform: rotate(91deg); /* Safari and Chrome */
-  -o-transform: rotate(91deg); /* Opera */
-  transform:rotate(91deg);
-}
-.progress-circle[data-value="50"]:BEFORE {
-  -moz-transform: rotate(51deg); /* Firefox */
-  -ms-transform: rotate(51deg); /* IE */
-  -webkit-transform: rotate(51deg); /* Safari and Chrome */
-  -o-transform: rotate(51deg); /* Opera */
-  transform:rotate(51deg);
-}
-
 .circle {
   position: relative;
   z-index: 3;
@@ -141,67 +63,3 @@ body {
   color: white;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
 }
-
-
-
-
-.circle-4div {
-  position: relative;
-  display: block;
-  margin: 2em 0;
-  background-color: transparent;
-  color: #222;
-  text-align: center;
-  height: 250px;
-  width: 250px;
-}
-
-.circle-4div:after {
-  display: block;
-  padding-bottom: 100%;
-  width: 100%;
-  height: 0;
-  border-radius: 50%;
-  background-color: aquamarine;
-  content: "";
-}
-
-.circle__inner {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.circle__wrapper {
-  display: table;
-  width: 100%;
-  height: 100%;
-}
-
-.circle__content {
-  display: table-cell;
-  padding: 1em;
-  vertical-align: middle;
-  font-size: 2em;
-}
-
-
-
-
-/*.circle {*/
-/*border-radius: 50%;*/
-/*height: 250px;*/
-/*width: 250px;*/
-/*}*/
-/*.circle-content {*/
-/*float: left;*/
-/*text-align: center;*/
-/*line-height: 1;*/
-/*margin-top: -1em;*/
-/*padding-top: 50%;*/
-/*width: 100%;*/
-/*font-size: 30px;*/
-/*}*/
