@@ -67,10 +67,19 @@ body {
   color: white;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
 }
-.circle span {
+.circle .project {
   display: block;
   margin: auto;
   width: 90%;
+}
+.circle .owner {
+  display: block;
+  margin: auto;
+  width: 90%;
+  font-size: 70%;
+  font-weight: 100;
+  opacity: 0.65;
+  margin-bottom: -5%;
 }
 
 

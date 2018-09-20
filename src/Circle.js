@@ -51,7 +51,8 @@ const Circle = ({circleText, effortPoints, owner, sheetIndex, progressPercent}) 
       <hr style={Object.assign({transform: 'rotate(-45deg)'}, hrStyle)}/>
       <hr style={Object.assign({transform: 'rotate(-135deg)'}, hrStyle)}/>
       <div style={circleStyle} className="circle">
-        <span>{circleText}</span>
+        <span className="project">{circleText}</span>
+        <span className="owner">({owner})</span>
       </div>
     </div>
   );
