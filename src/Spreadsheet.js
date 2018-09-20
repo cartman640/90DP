@@ -17,14 +17,17 @@ export function load(callback) {
         })
         .then(
           response => {
-            const sheetsData = response.result.valueRanges.map(range => {
+            const sheetsData = response.result.valueRanges.map((range, sheetIndex) => {
               const spreadsheet = range.values;
+              console.log(range);
               const headings = spreadsheet.shift();
               if(headings.includes('Poster Titles')) {
                 return spreadsheet
                   .filter(row => Array.isArray(row) && row.length)
                   .map(row =>
-                    row.reduce((obj, value, i) => Object.assign(obj, {[headings[i]]: value}))
+                    row.reduce((obj, value, i) => Object.assign(obj, {[headings[i]]: value})))
+                  .map(row =>
+                    Object.assign(row, {sheetName: range.range, sheetIndex })
                 );
               }
               return [];

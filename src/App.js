@@ -50,11 +50,16 @@ class App extends Component {
       { position: 'absolute', top: coord[0]+'px', left: coord[1]+'px',
       }
     ));
+    console.log(data);
     return (
       <div className="App">
         {data.map((row, i) => (
           <div style={circleCoordinates[i]} key={i}>
-            <Circle circleText={row['Poster Titles']} effortPoints={row['Est. Effort']} progressPercent={(row['%']*100)} />
+            <Circle circleText={row['Poster Titles']}
+                    effortPoints={row['Est. Effort']}
+                    owner={row['R']}
+                    sheetIndex={row['sheetIndex']}
+                    progressPercent={(row['%']*100)} />
           </div>
         ))}
       </div>

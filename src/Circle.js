@@ -1,10 +1,17 @@
 import React from 'react';
 
 
-const Circle = ({circleText, effortPoints, progressPercent}) => {
+const Circle = ({circleText, effortPoints, owner, sheetIndex, progressPercent}) => {
   // const scale = effortPoints / 25;
   const scale = normalize(effortPoints) / 22;
   const differencePercent = 0; // TODO: load this from spreadsheet
+  const circleColors = {
+    0: 'linear-gradient(-60deg, #278181, #27BDBC, #78CDD0)',
+    1: 'linear-gradient(-60deg, #288141, #42A24A, #7DC688)',
+    2: 'linear-gradient(-60deg, #81287B, #B04097, #C67DB5)',
+    3: 'linear-gradient(-60deg, #CD4C29, #F04E23, #F47B5B)',
+    4: 'linear-gradient(-60deg, #111, #333, #555)',
+  };
 
   const hrStyle = {
     top: (scale*283)+'px',
@@ -32,10 +39,11 @@ const Circle = ({circleText, effortPoints, progressPercent}) => {
     fontSize: (scale*70)+'px',
     boxShadow: `inset ${scale*3}px ${scale*3}px ${scale*4}px rgba(255, 255, 255, 1), ${scale*6}px ${scale*6}px ${scale*10}px 0 rgba(0, 0, 0, 0.3)`,
     textShadow: `${scale*2}px ${scale*2}px ${scale*2}px rgba(0, 0, 0, 0.6)`,
+    backgroundImage: circleColors[sheetIndex]
   };
   return (
     <div style={outerCircleStyle} className="outer-circle">
-      <div style={progressCircleStyle} className="progress-circle" data-start="0" data-value="180"></div>
+      <div style={progressCircleStyle} className="progress-circle"></div>
       {/*<div style={progressCircleStyle} className="progress-circle" data-start="180" data-value="90"></div>*/}
       {/*<div className="progress-circle difference" data-start="270" data-value="50"></div>*/}
       <hr style={hrStyle}/>
