@@ -10,6 +10,27 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+.greyRings1, .greyRings2, .greyRings3 {
+  width: 1350px;
+  height: 850px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 4px #ccc dashed;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+.greyRings2 {
+  width: 1100px;
+  height: 700px;
+  opacity: 0.55;
+}
+.greyRings3  {
+  width: 850px;
+  height: 550px;
+  opacity: 0.7;
+}
 
 /**
  * Circle Styles

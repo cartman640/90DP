@@ -53,6 +53,7 @@ class App extends Component {
     console.log(data);
     return (
       <div className="App">
+        <div className="greyRings1"></div><div className="greyRings2"></div><div className="greyRings3"></div>
         {data.map((row, i) => (
           <div style={circleCoordinates[i]} key={i}>
             <Circle circleText={row['Poster Titles']}
