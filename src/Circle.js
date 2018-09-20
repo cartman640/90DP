@@ -3,7 +3,7 @@ import React from 'react';
 
 const Circle = ({circleText, effortPoints, progressPercent}) => {
   const scale = effortPoints / 25;
-  const differencePercent = 7; // TODO: load this from spreadsheet
+  const differencePercent = 0; // TODO: load this from spreadsheet
 
   const hrStyle = {
     top: (scale*283)+'px',
