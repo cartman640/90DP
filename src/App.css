@@ -1,8 +1,14 @@
 body {
-  margin: 64px auto;
   background-color: white;
   font-family: "Myriad Pro", serif;
-  width: 94%;
+}
+.App {
+  width: 1400px;
+  height: 900px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /**

@@ -2,7 +2,8 @@ import React from 'react';
 
 
 const Circle = ({circleText, effortPoints, progressPercent}) => {
-  const scale = effortPoints / 25;
+  // const scale = effortPoints / 25;
+  const scale = normalize(effortPoints) / 22;
   const differencePercent = 0; // TODO: load this from spreadsheet
 
   const hrStyle = {
@@ -47,6 +48,12 @@ const Circle = ({circleText, effortPoints, progressPercent}) => {
     </div>
   );
 };
+
+function normalize(effortPoints){
+  const mx = (Math.log((effortPoints-1))/(Math.log(20-1)));
+  const preshiftNormalized = mx*(10-1);
+  return preshiftNormalized + 1;
+}
 
 function makeConicGrad(progressPercent, differencePercent) {
   const progressColor = 'rgba(244, 123, 91, 0.8)';
