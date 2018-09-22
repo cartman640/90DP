@@ -14,11 +14,15 @@ class App extends Component {
     error: null
   };
 
-  focusCircle = (row) => {
-    this.state.highlightToggle ?
-      this.setState({ highlightToggle: false, selection: []})
-      :
-      this.setState({ highlightToggle: true, selection: [row['Poster Titles']]});
+  focusCircle = (e, row) => {
+    if(e.shiftKey) {
+      this.setState({ selection: [...this.state.selection, row['Poster Titles']] });
+    } else {
+      this.state.highlightToggle ?
+        this.setState({highlightToggle: false, selection: []})
+        :
+        this.setState({highlightToggle: true, selection: [...this.state.selection, row['Poster Titles']]});
+    }
   };
   initClient = () => {
     window.gapi.client.init({
@@ -63,7 +67,7 @@ class App extends Component {
         { this.state.highlightToggle ? <div style={this.state.selection} className="highlight"></div> : null}
         <div className="greyRings1"></div><div className="greyRings2"></div><div className="greyRings3"></div>
         {data.map((row, i) => (
-          <div style={circleCoordinates[i]} key={i} onClick={() => this.focusCircle(row)}>
+          <div style={circleCoordinates[i]} key={i} onClick={(e) => this.focusCircle(e, row)}>
             <Circle circleText={row['Poster Titles']}
                     effortPoints={row['Est. Effort']}
                     owner={row['R']}
