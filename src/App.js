@@ -9,9 +9,17 @@ import Spinner from './Spinner';
 class App extends Component {
   state = {
     data: [],
+    highlightToggle: false,
+    selection: [],
     error: null
   };
 
+  focusCircle = (row) => {
+    this.state.highlightToggle ?
+      this.setState({ highlightToggle: false, selection: []})
+      :
+      this.setState({ highlightToggle: true, selection: [row['Poster Titles']]});
+  };
   initClient = () => {
     window.gapi.client.init({
       apiKey: config.apiKey,
@@ -50,17 +58,18 @@ class App extends Component {
       { position: 'absolute', top: coord[0]+'px', left: coord[1]+'px',
       }
     ));
-    console.log(data);
     return (
       <div className="App">
+        { this.state.highlightToggle ? <div style={this.state.selection} className="highlight"></div> : null}
         <div className="greyRings1"></div><div className="greyRings2"></div><div className="greyRings3"></div>
         {data.map((row, i) => (
-          <div style={circleCoordinates[i]} key={i}>
+          <div style={circleCoordinates[i]} key={i} onClick={() => this.focusCircle(row)}>
             <Circle circleText={row['Poster Titles']}
                     effortPoints={row['Est. Effort']}
                     owner={row['R']}
                     sheetIndex={row['sheetIndex']}
-                    progressPercent={(row['%']*100)} />
+                    progressPercent={(row['%']*100)}
+                    selected={this.state.selection.includes(row['Poster Titles']) ? true : false}/>
           </div>
         ))}
       </div>

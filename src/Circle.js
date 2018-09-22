@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Circle = ({circleText, effortPoints, owner, sheetIndex, progressPercent}) => {
+const Circle = ({circleText, effortPoints, owner, sheetIndex, progressPercent, selected}) => {
   // const scale = effortPoints / 25;
   const scale = normalize(effortPoints) / 22;
   const differencePercent = 0; // TODO: load this from spreadsheet
@@ -22,6 +22,7 @@ const Circle = ({circleText, effortPoints, owner, sheetIndex, progressPercent}) 
     height: (scale*500)+'px',
     width: (scale*500)+'px',
     padding: (scale*35)+'px',
+    zIndex: selected ? 11 : 1,
   };
   const progressCircleStyle = {
     margin: (scale*-33)+'px' + 0 + 0 + (scale*-33)+'px',
