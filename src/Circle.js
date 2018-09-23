@@ -1,10 +1,10 @@
 import React from 'react';
 
 
-const Circle = ({circleText, effortPoints, owner, sheetIndex, progressPercent, selected}) => {
+const Circle = ({circleText, effortPoints, owner, sheetIndex, progressPercent, currentSprintProgressPercent, selected}) => {
   // const scale = effortPoints / 25;
   const scale = normalize(effortPoints) / 22;
-  const differencePercent = 0; // TODO: load this from spreadsheet
+  console.log(circleText, currentSprintProgressPercent);
   const circleColors = {
     0: 'linear-gradient(-60deg, #278181, #27BDBC, #78CDD0)',
     1: 'linear-gradient(-60deg, #288141, #42A24A, #7DC688)',
@@ -14,8 +14,8 @@ const Circle = ({circleText, effortPoints, owner, sheetIndex, progressPercent, s
   };
 
   const hrStyle = {
-    top: (scale*283)+'px',
-    width: (scale*569)+'px',
+    top: (scale*282)+'px',
+    width: (scale*564)+'px',
     margin: '0 0 0 '+(scale*-35)+'px',
   };
   const outerCircleStyle = {
@@ -31,7 +31,7 @@ const Circle = ({circleText, effortPoints, owner, sheetIndex, progressPercent, s
     left: '33px',
     transformOrigin: 'center center',
     top: '33px',
-    background: makeConicGrad(Math.round(progressPercent), Math.round(differencePercent)),
+    background: makeConicGrad(Math.round(progressPercent), Math.round(currentSprintProgressPercent)),
     boxShadow: `inset ${scale*4}px ${scale*4}px ${scale*6}px 0 rgba(0, 0, 0, 0.3), ${scale*3}px ${scale*3}px ${scale*4}px rgba(255, 255, 255, 1)`,
   };
   const circleStyle = {
@@ -68,7 +68,7 @@ function normalize(effortPoints){
 function makeConicGrad(progressPercent, differencePercent) {
   const progressColor = 'rgba(244, 123, 91, 0.8)';
   const differenceColor = 'rgba(244, 210, 91, 0.8)';
-  const differenceSegment = (100-progressPercent > differencePercent) ? `${differenceColor} ${progressPercent}%, ${differenceColor} ${progressPercent+differencePercent}%,` : '';
+  const differenceSegment = (100-progressPercent >= differencePercent) ? `${differenceColor} ${progressPercent}%, ${differenceColor} ${progressPercent+differencePercent}%,` : '';
   return `conic-gradient(${progressColor} ${progressPercent}%, ${differenceSegment} rgba(0,0,0,0) 0)`;
 }
 

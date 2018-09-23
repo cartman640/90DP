@@ -65,17 +65,23 @@ class App extends Component {
     return (
       <div className="App">
         { this.state.highlightToggle ? <div style={this.state.selection} className="highlight"></div> : null}
-        <div className="greyRings1"></div><div className="greyRings2"></div><div className="greyRings3"></div>
+
+        <div className="Circles">
+          {/*<div className="greyRings1"></div><div className="greyRings2"></div><div className="greyRings3"></div>*/}
+          <img className="Rings" src="/rings.png" />
         {data.map((row, i) => (
           <div style={circleCoordinates[i]} key={i} onClick={(e) => this.focusCircle(e, row)}>
+            {console.log(row)}
             <Circle circleText={row['Poster Titles']}
                     effortPoints={row['Est. Effort']}
                     owner={row['R']}
                     sheetIndex={row['sheetIndex']}
                     progressPercent={(row['%']*100)}
+                    currentSprintProgressPercent={(row['Current Sprint'] ? row['Current Sprint']*100 : 0)}
                     selected={this.state.selection.includes(row['Poster Titles']) ? true : false}/>
           </div>
         ))}
+        </div>
       </div>
     );
   }
