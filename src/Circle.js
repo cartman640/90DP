@@ -10,7 +10,7 @@ const Circle = ({circleText, effortPoints, owner, sheetIndex, progressPercent, c
     1: 'linear-gradient(-60deg, #288141, #42A24A, #7DC688)',
     2: 'linear-gradient(-60deg, #81287B, #B04097, #C67DB5)',
     3: 'linear-gradient(-60deg, #CD4C29, #F04E23, #F47B5B)',
-    4: 'linear-gradient(-60deg, #111, #333, #555)',
+    4: 'linear-gradient(-60deg, #28587F, #2879BC, #7AA8CE)',
   };
 
   const hrStyle = {
