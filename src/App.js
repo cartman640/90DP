@@ -11,7 +11,7 @@ class App extends Component {
     data: [],
     highlightToggle: false,
     selection: [],
-    error: null
+    error: null,
   };
 
   focusCircle = (e, row) => {
@@ -52,35 +52,46 @@ class App extends Component {
     if(data.length === 0) {
       return <div className="App"><div className='loading'><Spinner /></div></div>
     }
-    const coordinates21 = [
-      [15, 50], [680, 550], [500, 270], [15, 750], [15, 1000], [15, 1180],
-      [233, 15], [470, 800], [670, 285], [220, 750], [220, 1000],
-      [470, 15], [680, 45], [450, 535], [220, 255], [500, 1100],
-      [680, 800], [750, 1050], [30, 280], [15, 500], [285, 575],
-    ];
-    const circleCoordinates = coordinates21.map(coord => (
-      { position: 'absolute', top: coord[0]+'px', left: coord[1]+'px',
-      }
-    ));
+    const circleCoordinates = {
+      'Canvas Integration': [42, -45],
+      'LabStation Localisation': [530, 450],
+      'GDPR Compliance': [490, 80],
+      'Scope Anatomy Features': [680, 950],
+      'Open-source Adoption Criteria': [495, -90],
+      'Elephant Microservices': [525, 830],
+      'Database Performance': [260, -20],
+      'PDF Generation Issues': [650, 670],
+      'LabStation Launch (BR, FR, DE)': [620, 225],
+      'Mapping Distributor Flows': [660, -30],
+      'Anatomy Content MVP': [10, 1000],
+      'Biology Product Plan': [10, 650],
+      'SCRUM Content Process': [120, 800],
+      'Content Translation (BR, FR, DE)': [110, 465],
+      'Emerging Markets Plan': [10, 200],
+      'Lt Business Model': [60, 1290],
+      'Product Group Metrics': [350, 1380],
+      'Customer Focus Feedback': [530, 1260],
+      'Migrate Support Site': [530, 1060],
+      'Lt Branding': [680, 1160],
+      'Mobile Device Usage Report': [520, 690],
+    };
     return (
       <div className="App">
         { this.state.highlightToggle ? <div style={this.state.selection} className="highlight"></div> : null}
-
         <div className="Circles">
-          {/*<div className="greyRings1"></div><div className="greyRings2"></div><div className="greyRings3"></div>*/}
           <img className="Rings" src="/rings.png" />
-        {data.map((row, i) => (
-          <div style={circleCoordinates[i]} key={i} onClick={(e) => this.focusCircle(e, row)}>
-            {console.log(row)}
-            <Circle circleText={row['Poster Titles']}
-                    effortPoints={row['Est. Effort']}
-                    owner={row['R']}
-                    sheetIndex={row['sheetIndex']}
-                    progressPercent={(row['%']*100)}
-                    currentSprintProgressPercent={(row['Current Sprint'] ? row['Current Sprint']*100 : 0)}
-                    selected={this.state.selection.includes(row['Poster Titles']) ? true : false}/>
-          </div>
-        ))}
+          <img className="Background" src="/background.png" />
+          {data.map((row, i) => (
+            <div draggable style={stylePosition(circleCoordinates[row['Poster Titles']])} key={i} onClick={(e) => this.focusCircle(e, row)}>
+              <Circle circleText={row['Poster Titles']}
+                      effortPoints={row['Est. Effort']}
+                      owner={row['R']}
+                      sheetIndex={row['sheetIndex']}
+                      progressPercent={(row['%']*100)}
+                      currentSprintProgressPercent={(row['Current Sprint'] ? row['Current Sprint']*100 : 0)}
+                      selected={this.state.selection.includes(row['Poster Titles'])}/>
+            </div>
+          ))}
         </div>
       </div>
     );
@@ -88,3 +99,7 @@ class App extends Component {
 }
 
 export default App;
+
+const stylePosition = (coord) => {
+  return { position: 'absolute', top: coord[0]+'px', left: coord[1]+'px' };
+};

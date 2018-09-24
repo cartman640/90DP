@@ -35,10 +35,16 @@ body {
   left: -180px;
   width: 120%;
 }
+.Background {
+  position: absolute;
+  top: -154px;
+  left: -25px;
+  width: 100%;
+}
 
 .highlight {
   position: absolute;
-  width: 2000px;
+  width: 2200px;
   height: 2500px;
   background-color: #000;
   opacity: 0.85;
