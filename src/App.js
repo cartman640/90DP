@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { load } from './Spreadsheet';
+import { load } from './SpreadsheetClient';
 import './App.css';
-import config from "./config";
 import Circle from "./Circle";
 import Spinner from './Spinner';
 
@@ -25,12 +24,7 @@ class App extends Component {
     }
   };
   initClient = () => {
-    window.gapi.client.init({
-      apiKey: config.apiKey,
-      discoveryDocs: config.discoveryDocs
-    }).then(() => {
-      load(this.onLoad);
-    });
+    load(this.onLoad);
   };
   onLoad = (spreadsheet, error) => {
     if (spreadsheet) {

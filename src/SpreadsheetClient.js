@@ -1,6 +1,17 @@
-import config from "./config";
+export function load(callback){
+  fetch('/spreadsheet').then(response => {
+    if(response.status === 200){
+      response.json().then(data => {
+        callback(data);
+      });
+    } else {
+      callback(false, response.statusText);
+    }
+  });
+}
 
-export function load(callback) {
+export function oldload(callback) {
+  const config = {spreadsheetId: ''};
   window.gapi.client.load("sheets", "v4", () => {
     window.gapi.client.sheets.spreadsheets
     .get({
